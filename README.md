@@ -46,8 +46,6 @@
 ## Environment Setup
 > A Windows 10 virtual machine was provisioned in Azure and onboarded to MDE. A simulated threat was introduced using a PowerShell port scanning script to generate logs and test detection capabilities.
 
-![Environment Setup](assets/images/setup.jpg)
-
 ---
 
 ## Walkthrough
@@ -65,6 +63,9 @@
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/joshmadakor1/lognpacific-public/refs/heads/main/cyber-range/entropy-gorilla/portscan.ps1' -OutFile 'C:\programdata\portscan.ps1'
 cmd /c powershell.exe -ExecutionPolicy Bypass -File C:\programdata\portscan.ps1
 ```
+![Step 1: Execute the Hunt](https://raw.githubusercontent.com/Samuel-Cavada/Scenario-2-Sudden-Network-Slowdowns/main/images/S2SNS3.png)
+
+
 
 ---
 
@@ -82,6 +83,7 @@ DeviceNetworkEvents
 | summarize ConnectionCount = count() by DeviceName, LocalIP, RemoteIP, RemotePort
 | order by ConnectionCount desc
 ```
+![Image 5](https://raw.githubusercontent.com/Samuel-Cavada/Scenario-2-Sudden-Network-Slowdowns/main/images/S2SNS5.png)
 
 > Queried process events around the time of anomalous network activity:
 
@@ -94,6 +96,7 @@ DeviceProcessEvents
 | order by Timestamp desc
 ```
 
+![Image 7](https://raw.githubusercontent.com/Samuel-Cavada/Scenario-2-Sudden-Network-Slowdowns/main/images/S2SNS7.png)
 ---
 
 ### Step 4: Analyze and Respond
